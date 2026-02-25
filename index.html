@@ -1,0 +1,1485 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <title>GCC Travel 2026 • UAE/KSA • Premium Travel Experience</title>
+  
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="preconnect" href="https://api.mapbox.com">
+  <link rel="dns-prefetch" href="https://images.unsplash.com">
+  
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" media="print" onload="this.media='all'">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Cairo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Mapbox GL -->
+  <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- AOS Animation -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  
+  <!-- Swiper -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  
+  <!-- Meta Tags -->
+  <meta name="description" content="Experience the GCC like never before with AI-powered travel planning, premium experiences, and cultural immersion in Dubai, Riyadh, and beyond.">
+  <meta name="keywords" content="GCC travel, Dubai tourism, Saudi Arabia travel, UAE holidays, premium travel, luxury experiences, Middle East tours">
+  <meta name="author" content="GCC Travel">
+  <meta name="robots" content="index, follow">
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="GCC Travel 2026 - Premium Travel Experiences">
+  <meta property="og:description" content="Experience the GCC like never before with AI-powered travel planning.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1200">
+  
+  <!-- Canonical -->
+  <link rel="canonical" href="https://www.gcctravel.com/">
+  
+  <!-- Hreflang -->
+  <link rel="alternate" hreflang="en" href="https://www.gcctravel.com/en">
+  <link rel="alternate" hreflang="ar" href="https://www.gcctravel.com/ar">
+  
+  <style>
+    /* Critical CSS inlined for performance */
+    :root {
+      --primary: #0066b3;
+      --primary-light: #3498db;
+      --secondary: #c8102e;
+      --accent: #f1c40f;
+      --gold: #c9a227;
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+
+    html[dir="rtl"] body {
+      font-family: 'Cairo', sans-serif;
+    }
+
+    /* Loading spinner */
+    .loader {
+      border: 3px solid #f3f3f3;
+      border-top: 3px solid var(--primary);
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Skeleton loading */
+    .skeleton {
+      background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.5s infinite;
+    }
+
+    @keyframes shimmer {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+
+    /* Service cards */
+    .service-card {
+      transition: var(--transition);
+      backdrop-filter: blur(10px);
+    }
+
+    .service-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 30px 50px -20px rgba(0,102,179,0.4);
+    }
+
+    /* Favorite button */
+    .favorite-btn.active {
+      color: var(--gold);
+      transform: scale(1.1);
+    }
+
+    /* Map container */
+    #map {
+      height: 500px;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 20px 40px -15px rgba(0,0,0,0.3);
+    }
+
+    @media (max-width: 768px) {
+      #map { height: 350px; }
+    }
+
+    /* Dark mode */
+    .dark {
+      background-color: #0a0c10;
+      color: #e2e8f0;
+    }
+
+    .dark .bg-white {
+      background-color: #1a1e2a !important;
+    }
+
+    .dark .bg-gray-50 {
+      background-color: #0f1219 !important;
+    }
+
+    /* Glass morphism */
+    .glass-card {
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    /* Premium badge */
+    .premium-badge {
+      background: linear-gradient(135deg, var(--gold), #ffd700);
+      color: #1a1a1a;
+      padding: 0.25rem 1rem;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.8rem;
+    }
+
+    /* Exit popup animation */
+    @keyframes slideUp {
+      from { transform: translateY(100px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .animate-slideUp {
+      animation: slideUp 0.3s ease-out;
+    }
+
+    /* Voice animation */
+    .voice-active {
+      animation: voicePulse 1.5s infinite;
+    }
+
+    @keyframes voicePulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(0,102,179,0.7); }
+      50% { box-shadow: 0 0 0 10px rgba(0,102,179,0); }
+    }
+
+    /* Menu overlay */
+    .menu-overlay {
+      transition: opacity 0.3s ease;
+    }
+
+    /* Mobile menu */
+    #mobileMenu {
+      transition: transform 0.3s ease;
+      transform: translateX(-100%);
+    }
+
+    #mobileMenu.open {
+      transform: translateX(0);
+    }
+
+    html[dir="rtl"] #mobileMenu.open {
+      transform: translateX(0);
+    }
+
+    /* Subscription card */
+    .subscription-card {
+      transition: var(--transition);
+      border: 2px solid transparent;
+    }
+
+    .subscription-card:hover {
+      transform: scale(1.05);
+      border-color: var(--gold);
+    }
+
+    .subscription-card.popular {
+      border-color: var(--gold);
+    }
+
+    /* Touch-friendly */
+    button, a, input, select, textarea {
+      min-height: 44px;
+      min-width: 44px;
+    }
+
+    input, select, textarea {
+      font-size: 16px !important;
+    }
+  </style>
+</head>
+<body class="bg-gray-50 font-['Inter'] transition-colors duration-300">
+  <!-- Loading Overlay -->
+  <div id="loadingOverlay" class="fixed inset-0 bg-black bg-opacity-70 z-50 flex items-center justify-center hidden">
+    <div class="loader"></div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="sticky top-0 z-40 bg-white/95 backdrop-blur-md shadow-lg" id="navbar">
+    <div class="container mx-auto px-4 py-3">
+      <div class="flex items-center justify-between">
+        <!-- Logo -->
+        <div class="flex items-center space-x-2 rtl:space-x-reverse">
+          <div class="w-12 h-12 bg-gradient-to-br from-[#0066b3] to-[#3498db] rounded-xl flex items-center justify-center transform rotate-12 hover:rotate-0 transition-all duration-500">
+            <i class="fas fa-compass text-white text-2xl transform -rotate-12"></i>
+          </div>
+          <span class="text-2xl font-bold bg-gradient-to-r from-[#0066b3] to-[#c8102e] bg-clip-text text-transparent">
+            GCC Travel 2026
+          </span>
+          <span class="premium-badge ml-2">PREMIUM</span>
+        </div>
+
+        <!-- Desktop Navigation -->
+        <div class="hidden lg:flex items-center space-x-8 rtl:space-x-reverse">
+          <a href="#home" class="nav-link text-gray-700 hover:text-[#0066b3] font-medium transition">Home</a>
+          <a href="#destinations" class="nav-link text-gray-700 hover:text-[#0066b3] font-medium transition">Destinations</a>
+          <a href="#planner" class="nav-link text-gray-700 hover:text-[#0066b3] font-medium transition">AI Planner</a>
+          <a href="#experiences" class="nav-link text-gray-700 hover:text-[#0066b3] font-medium transition">Experiences</a>
+          <a href="#subscription" class="nav-link text-gray-700 hover:text-[#0066b3] font-medium transition">Membership</a>
+          <a href="#community" class="nav-link text-gray-700 hover:text-[#0066b3] font-medium transition">Community</a>
+        </div>
+
+        <!-- Right side buttons -->
+        <div class="flex items-center space-x-3 rtl:space-x-reverse">
+          <!-- Voice Search -->
+          <button id="voiceSearch" class="hidden md:block p-2 rounded-full hover:bg-gray-100 transition relative" aria-label="Voice search">
+            <i class="fas fa-microphone text-gray-700 text-lg"></i>
+          </button>
+          
+          <!-- Language Selector -->
+          <div class="relative">
+            <button id="langDropdownBtn" class="flex items-center space-x-2 rtl:space-x-reverse px-3 py-2 rounded-lg hover:bg-gray-100 transition" aria-label="Select language">
+              <i class="fas fa-globe text-gray-700"></i>
+              <span id="currentLang">EN</span>
+              <i class="fas fa-chevron-down text-xs"></i>
+            </button>
+            <div id="langDropdown" class="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg hidden z-50">
+              <div class="py-2">
+                <button class="lang-option w-full text-left px-4 py-2 hover:bg-gray-100" data-lang="en">🇬🇧 English</button>
+                <button class="lang-option w-full text-left px-4 py-2 hover:bg-gray-100" data-lang="ar">🇸🇦 العربية</button>
+                <button class="lang-option w-full text-left px-4 py-2 hover:bg-gray-100" data-lang="hi">🇮🇳 हिन्दी</button>
+                <button class="lang-option w-full text-left px-4 py-2 hover:bg-gray-100" data-lang="ur">🇵🇰 اردو</button>
+                <button class="lang-option w-full text-left px-4 py-2 hover:bg-gray-100" data-lang="ru">🇷🇺 Русский</button>
+                <button class="lang-option w-full text-left px-4 py-2 hover:bg-gray-100" data-lang="zh">🇨🇳 中文</button>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Dark Mode Toggle -->
+          <button id="darkModeToggle" class="p-2 rounded-full hover:bg-gray-100 transition" aria-label="Toggle dark mode">
+            <i class="fas fa-moon text-gray-700"></i>
+          </button>
+          
+          <!-- User Menu -->
+          <div class="relative">
+            <button id="userMenuBtn" class="flex items-center space-x-2 rtl:space-x-reverse" aria-label="User menu">
+              <div class="w-10 h-10 bg-gradient-to-br from-[#0066b3] to-[#3498db] rounded-full flex items-center justify-center text-white font-semibold">
+                <span id="userInitials">G</span>
+              </div>
+            </button>
+            <div id="userDropdown" class="absolute right-0 mt-2 w-64 bg-white rounded-xl shadow-lg hidden z-50">
+              <div class="p-4 border-b">
+                <p class="font-semibold" id="userName">Guest User</p>
+                <p class="text-sm text-gray-500" id="userEmail">guest@example.com</p>
+              </div>
+              <div class="py-2">
+                <button class="user-dropdown-item w-full text-left px-4 py-2 hover:bg-gray-100 flex items-center gap-3"><i class="fas fa-user w-5"></i> My Profile</button>
+                <button class="user-dropdown-item w-full text-left px-4 py-2 hover:bg-gray-100 flex items-center gap-3"><i class="fas fa-crown w-5 text-[#c9a227]"></i> Premium Membership</button>
+                <button class="user-dropdown-item w-full text-left px-4 py-2 hover:bg-gray-100 flex items-center gap-3"><i class="fas fa-ticket-alt w-5"></i> My Bookings</button>
+                <button class="user-dropdown-item w-full text-left px-4 py-2 hover:bg-gray-100 flex items-center gap-3"><i class="fas fa-map-marked-alt w-5"></i> My Trips</button>
+                <button class="user-dropdown-item w-full text-left px-4 py-2 hover:bg-gray-100 flex items-center gap-3"><i class="fas fa-trophy w-5 text-[#c9a227]"></i> Challenges</button>
+              </div>
+              <div class="border-t py-2">
+                <button class="user-dropdown-item w-full text-left px-4 py-2 hover:bg-gray-100 flex items-center gap-3 text-red-500"><i class="fas fa-sign-out-alt w-5"></i> Sign Out</button>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Mobile Menu Button -->
+          <button id="mobileMenuBtn" class="lg:hidden p-2 rounded-lg hover:bg-gray-100" aria-label="Toggle mobile menu">
+            <i class="fas fa-bars text-gray-700"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Navigation -->
+      <div id="mobileMenu" class="fixed top-0 left-0 h-full w-64 bg-white shadow-2xl z-50 p-6 hidden">
+        <div class="flex justify-end mb-6">
+          <button id="closeMobileMenu" class="p-2 hover:bg-gray-100 rounded-lg">
+            <i class="fas fa-times text-xl"></i>
+          </button>
+        </div>
+        <div class="flex flex-col space-y-4">
+          <a href="#home" class="mobile-nav-link px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg">Home</a>
+          <a href="#destinations" class="mobile-nav-link px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg">Destinations</a>
+          <a href="#planner" class="mobile-nav-link px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg">AI Planner</a>
+          <a href="#experiences" class="mobile-nav-link px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg">Experiences</a>
+          <a href="#subscription" class="mobile-nav-link px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg">Membership</a>
+          <a href="#community" class="mobile-nav-link px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg">Community</a>
+        </div>
+      </div>
+      <div id="mobileMenuOverlay" class="menu-overlay fixed inset-0 bg-black bg-opacity-50 z-40 hidden"></div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="relative h-screen flex items-center justify-center overflow-hidden">
+    <div class="absolute inset-0 w-full h-full">
+      <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80" 
+           alt="Dubai Skyline" class="w-full h-full object-cover" loading="eager" fetchpriority="high">
+      <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+    </div>
+    
+    <div class="relative z-10 text-center text-white px-4" data-aos="fade-up">
+      <h1 class="text-5xl md:text-7xl font-bold mb-4 leading-tight">
+        <span class="bg-gradient-to-r from-[#f1c40f] to-[#c9a227] bg-clip-text text-transparent">
+          Experience the GCC
+        </span>
+        <br>Like Never Before
+      </h1>
+      <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
+        AI-powered travel planning • Premium experiences • Cultural immersion
+      </p>
+      
+      <div class="max-w-4xl mx-auto bg-white/20 backdrop-blur-md rounded-full p-2 flex flex-col md:flex-row gap-2">
+        <div class="flex-1 relative">
+          <i class="fas fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+          <input type="text" placeholder="Where to?" class="w-full pl-12 pr-4 py-4 rounded-full bg-white/90 text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#0066b3]" id="searchInput">
+        </div>
+        <div class="flex-1 relative">
+          <i class="fas fa-calendar absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+          <input type="text" placeholder="When?" class="w-full pl-12 pr-4 py-4 rounded-full bg-white/90 text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#0066b3]" id="dateInput">
+        </div>
+        <button class="px-8 py-4 bg-gradient-to-r from-[#0066b3] to-[#3498db] text-white rounded-full font-semibold hover:shadow-lg transition transform hover:scale-105" onclick="handleSearch()">
+          Search
+        </button>
+      </div>
+      
+      <div id="searchResults" class="hidden absolute left-1/2 transform -translate-x-1/2 mt-2 w-full max-w-2xl bg-white rounded-2xl shadow-2xl z-20 p-4"></div>
+      
+      <div class="flex flex-wrap justify-center gap-8 mt-12">
+        <div class="text-center">
+          <div class="text-3xl font-bold">500+</div>
+          <div class="text-sm opacity-90">Premium Experiences</div>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl font-bold">50k+</div>
+          <div class="text-sm opacity-90">Happy Travelers</div>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl font-bold">24/7</div>
+          <div class="text-sm opacity-90">AI Concierge</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+      <i class="fas fa-chevron-down text-white text-2xl"></i>
+    </div>
+  </section>
+
+  <!-- Destinations Section -->
+  <section id="destinations" class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12" data-aos="fade-up">
+        <h2 class="text-4xl font-bold mb-4">Popular Destinations</h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">Discover the most sought-after destinations across the GCC.</p>
+      </div>
+      
+      <div class="swiper destinationSwiper">
+        <div class="swiper-wrapper">
+          <!-- Dubai -->
+          <div class="swiper-slide">
+            <div class="relative rounded-2xl overflow-hidden group cursor-pointer" onclick="selectDestination('dubai')">
+              <img src="dubai.jpg" 
+                   alt="Dubai" class="w-full h-96 object-cover group-hover:scale-110 transition duration-500" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+              <div class="absolute bottom-0 left-0 p-6 text-white">
+                <h3 class="text-2xl font-bold mb-2">Dubai</h3>
+                <p class="mb-3">UAE • 350+ experiences</p>
+              </div>
+              <div class="absolute top-4 right-4">
+                <button class="favorite-btn w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-lg" onclick="event.stopPropagation()">
+                  <i class="far fa-heart text-gray-700"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Riyadh -->
+          <div class="swiper-slide">
+            <div class="relative rounded-2xl overflow-hidden group cursor-pointer" onclick="selectDestination('riyadh')">
+              <img src="Riyadh.jpg" 
+                   alt="Riyadh" class="w-full h-96 object-cover group-hover:scale-110 transition duration-500" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+              <div class="absolute bottom-0 left-0 p-6 text-white">
+                <h3 class="text-2xl font-bold mb-2">Riyadh</h3>
+                <p class="mb-3">KSA • 280+ experiences</p>
+              </div>
+              <div class="absolute top-4 right-4">
+                <button class="favorite-btn w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-lg" onclick="event.stopPropagation()">
+                  <i class="far fa-heart text-gray-700"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Doha -->
+          <div class="swiper-slide">
+            <div class="relative rounded-2xl overflow-hidden group cursor-pointer" onclick="selectDestination('doha')">
+              <img src= "DohaCityTour.webp"
+                   alt="Doha" class="w-full h-96 object-cover group-hover:scale-110 transition duration-500" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+              <div class="absolute bottom-0 left-0 p-6 text-white">
+                <h3 class="text-2xl font-bold mb-2">Doha</h3>
+                <p class="mb-3">Qatar • 200+ experiences</p>
+              </div>
+              <div class="absolute top-4 right-4">
+                <button class="favorite-btn w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-lg" onclick="event.stopPropagation()">
+                  <i class="far fa-heart text-gray-700"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AI Planner Section -->
+  <section id="planner" class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12" data-aos="fade-up">
+        <span class="inline-block px-4 py-2 bg-[#0066b3]/10 text-[#0066b3] rounded-full text-sm font-semibold mb-4">
+          <i class="fas fa-robot mr-2"></i> AI-POWERED PLANNING
+        </span>
+        <h2 class="text-4xl font-bold mb-4">Your Personal Travel AI</h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">Get personalized recommendations based on your preferences.</p>
+      </div>
+      
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div class="lg:col-span-1 bg-white rounded-2xl p-6 shadow-lg" data-aos="fade-right">
+          <h3 class="text-xl font-semibold mb-4">Tell us your preferences</h3>
+          
+          <form id="preferencesForm" onsubmit="generateItinerary(event)" class="space-y-4">
+            <div>
+              <label class="block text-sm font-medium mb-2">Travel Style</label>
+              <select class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-[#0066b3]" id="travelStyle">
+                <option>Luxury</option>
+                <option>Adventure</option>
+                <option>Cultural</option>
+                <option>Family-friendly</option>
+                <option>Eco-tourism</option>
+              </select>
+            </div>
+            
+            <div>
+              <label class="block text-sm font-medium mb-2">Budget per person</label>
+              <select class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-[#0066b3]" id="budget">
+                <option>$1,000 - $3,000</option>
+                <option>$3,000 - $5,000</option>
+                <option>$5,000 - $10,000</option>
+                <option>$10,000+</option>
+              </select>
+            </div>
+            
+            <div>
+              <label class="block text-sm font-medium mb-2">Duration</label>
+              <select class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-[#0066b3]" id="duration">
+                <option>3-5 days</option>
+                <option>1 week</option>
+                <option>2 weeks</option>
+                <option>1 month+</option>
+              </select>
+            </div>
+            
+            <div>
+              <label class="block text-sm font-medium mb-2">Interests</label>
+              <div class="space-y-2">
+                <label class="flex items-center gap-2"><input type="checkbox" class="rounded text-[#0066b3]" value="shopping"> Shopping</label>
+                <label class="flex items-center gap-2"><input type="checkbox" class="rounded text-[#0066b3]" value="culture"> History & Culture</label>
+                <label class="flex items-center gap-2"><input type="checkbox" class="rounded text-[#0066b3]" value="adventure"> Adventure Sports</label>
+                <label class="flex items-center gap-2"><input type="checkbox" class="rounded text-[#0066b3]" value="dining"> Fine Dining</label>
+                <label class="flex items-center gap-2"><input type="checkbox" class="rounded text-[#0066b3]" value="desert"> Desert Experiences</label>
+                <label class="flex items-center gap-2"><input type="checkbox" class="rounded text-[#0066b3]" value="beach"> Beach & Relaxation</label>
+              </div>
+            </div>
+            
+            <button type="submit" class="w-full px-6 py-3 bg-gradient-to-r from-[#0066b3] to-[#3498db] text-white rounded-lg font-semibold hover:shadow-lg transition transform hover:scale-105">
+              Generate AI Itinerary <i class="fas fa-magic ml-2"></i>
+            </button>
+          </form>
+        </div>
+        
+        <div class="lg:col-span-2" data-aos="fade-left">
+          <div class="bg-white rounded-2xl p-6 shadow-lg mb-6">
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="text-xl font-semibold">Recommended for you</h3>
+              <span class="text-sm text-gray-500">AI-powered • Updated now</span>
+            </div>
+            
+            <div id="recommendations" class="space-y-4">
+              <!-- Will be populated by JavaScript -->
+            </div>
+          </div>
+          
+          <div class="bg-gradient-to-r from-[#0066b3] to-[#3498db] rounded-2xl p-6 text-white">
+            <div class="flex items-center justify-between">
+              <div>
+                <span class="text-sm opacity-90">✈️ Price Alert</span>
+                <h4 class="text-xl font-bold mt-1">Flights to Dubai from $450</h4>
+                <p class="text-sm opacity-90 mt-2">24% below average • Book within 3 days</p>
+              </div>
+              <button class="px-6 py-3 bg-white text-[#0066b3] rounded-full font-semibold hover:shadow-lg transition" onclick="showFlightDeals()">
+                View Deals
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Map Section -->
+  <section id="map-section" class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12" data-aos="fade-up">
+        <span class="inline-block px-4 py-2 bg-[#0066b3]/10 text-[#0066b3] rounded-full text-sm font-semibold mb-4">
+          <i class="fas fa-map-marked-alt mr-2"></i> INTERACTIVE MAP
+        </span>
+        <h2 class="text-4xl font-bold mb-4">Explore Destinations</h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">Interactive map with points of interest and AR navigation.</p>
+      </div>
+      
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div class="lg:col-span-2">
+          <div id="map" class="rounded-2xl shadow-2xl"></div>
+        </div>
+        
+        <div class="space-y-6">
+          <div class="bg-gray-50 rounded-2xl p-6" data-aos="fade-left">
+            <h3 class="text-xl font-semibold mb-4">Nearby Points of Interest</h3>
+            <div id="poiList" class="space-y-4">
+              <!-- Populated by JavaScript -->
+            </div>
+          </div>
+          
+          <div class="bg-gradient-to-br from-[#0066b3] to-[#3498db] rounded-2xl p-6 text-white">
+            <div class="flex items-center gap-4 mb-4">
+              <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center">
+                <i class="fas fa-wifi-slash text-2xl"></i>
+              </div>
+              <div>
+                <h4 class="font-semibold">Offline Maps Available</h4>
+                <p class="text-sm opacity-90">Download for remote areas</p>
+              </div>
+            </div>
+            <button class="w-full mt-4 px-4 py-2 bg-white text-[#0066b3] rounded-lg font-semibold hover:bg-gray-100 transition" onclick="downloadOfflineMaps()">
+              Download Selected
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Premium Experiences Section -->
+  <section id="experiences" class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12" data-aos="fade-up">
+        <span class="inline-block px-4 py-2 bg-[#c9a227]/10 text-[#c9a227] rounded-full text-sm font-semibold mb-4">
+          <i class="fas fa-crown mr-2"></i> PREMIUM EXPERIENCES
+        </span>
+        <h2 class="text-4xl font-bold mb-4">Luxury Redefined</h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">Exclusive experiences crafted for the discerning traveler.</p>
+      </div>
+      
+      <div id="experiencesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Populated by JavaScript -->
+      </div>
+      
+      <div class="text-center mt-12">
+        <button class="px-8 py-3 border-2 border-[#0066b3] text-[#0066b3] rounded-full font-semibold hover:bg-[#0066b3] hover:text-white transition" onclick="loadMoreExperiences()">
+          View All Premium Experiences
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Subscription Section -->
+  <section id="subscription" class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12" data-aos="fade-up">
+        <span class="inline-block px-4 py-2 bg-[#c9a227]/10 text-[#c9a227] rounded-full text-sm font-semibold mb-4">
+          <i class="fas fa-crown mr-2"></i> GCC TRAVEL MEMBERSHIP
+        </span>
+        <h2 class="text-4xl font-bold mb-4">Unlock Premium Benefits</h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">Join thousands of travelers enjoying exclusive perks.</p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <!-- Basic Plan -->
+        <div class="subscription-card bg-gray-50 rounded-2xl p-8 text-center" data-aos="fade-right">
+          <div class="w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-user text-gray-600 text-2xl"></i>
+          </div>
+          <h3 class="text-2xl font-bold mb-2">Explorer</h3>
+          <div class="text-3xl font-bold text-[#0066b3] mb-4">FREE</div>
+          <ul class="space-y-3 mb-8 text-left">
+            <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Basic itinerary planning</li>
+            <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> 5 saved favorites</li>
+            <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Weather updates</li>
+          </ul>
+          <button class="w-full px-4 py-2 border-2 border-gray-300 rounded-lg font-semibold" disabled>Current Plan</button>
+        </div>
+        
+        <!-- Pro Plan -->
+        <div class="subscription-card popular bg-white rounded-2xl p-8 text-center shadow-xl relative transform scale-105 z-10" data-aos="fade-up">
+          <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+            <span class="premium-badge">MOST POPULAR</span>
+          </div>
+          <div class="w-16 h-16 bg-[#c9a227]/20 rounded-full flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-crown text-[#c9a227] text-2xl"></i>
+          </div>
+          <h3 class="text-2xl font-bold mb-2">Premium</h3>
+          <div class="text-3xl font-bold text-[#0066b3] mb-2">$29<span class="text-sm text-gray-500">/mo</span></div>
+          <ul class="space-y-3 mb-8 text-left">
+            <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> AI-powered planning</li>
+            <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Unlimited favorites</li>
+            <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Price alerts</li>
+            <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Premium experiences access</li>
+            <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Priority support 24/7</li>
+          </ul>
+          <button class="w-full px-4 py-3 bg-gradient-to-r from-[#0066b3] to-[#3498db] text-white rounded-lg font-semibold hover:shadow-lg transition" onclick="startTrial()">
+            Start Free Trial
+          </button>
+        </div>
+        
+        <!-- Family Plan -->
+        <div class="subscription-card bg-gray-50 rounded-2xl p-8 text-center" data-aos="fade-left">
+          <div class="w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-users text-gray-600 text-2xl"></i>
+          </div>
+          <h3 class="text-2xl font-bold mb-2">Family</h3>
+          <div class="text-3xl font-bold text-[#0066b3] mb-2">$49<span class="text-sm text-gray-500">/mo</span></div>
+          <ul class="space-y-3 mb-8 text-left">
+            <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> All Premium features</li>
+            <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> 5 family accounts</li>
+            <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Family itinerary sharing</li>
+            <li class="flex items-center gap-2"><i class="fas fa-check text-green-500"></i> Kids activities guide</li>
+          </ul>
+          <button class="w-full px-4 py-2 border-2 border-[#0066b3] text-[#0066b3] rounded-lg font-semibold hover:bg-[#0066b3] hover:text-white transition" onclick="selectFamilyPlan()">
+            Choose Plan
+          </button>
+        </div>
+      </div>
+      
+      <!-- Payment Methods -->
+      <div class="mt-12 text-center" data-aos="fade-up">
+        <p class="text-sm text-gray-500 mb-4">Accepted Payment Methods</p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <span class="px-4 py-2 bg-gray-100 rounded-full text-sm"><i class="fab fa-cc-visa mr-2"></i> Visa</span>
+          <span class="px-4 py-2 bg-gray-100 rounded-full text-sm"><i class="fab fa-cc-mastercard mr-2"></i> Mastercard</span>
+          <span class="px-4 py-2 bg-gray-100 rounded-full text-sm"><i class="fab fa-apple-pay mr-2"></i> Apple Pay</span>
+          <span class="px-4 py-2 bg-gray-100 rounded-full text-sm"><i class="fas fa-wallet mr-2"></i> STC Pay</span>
+          <span class="px-4 py-2 bg-gray-100 rounded-full text-sm"><i class="fas fa-credit-card mr-2"></i> MADA</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Community Section -->
+  <section id="community" class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12" data-aos="fade-up">
+        <span class="inline-block px-4 py-2 bg-[#c9a227]/10 text-[#c9a227] rounded-full text-sm font-semibold mb-4">
+          <i class="fas fa-trophy mr-2"></i> TRAVEL COMMUNITY
+        </span>
+        <h2 class="text-4xl font-bold mb-4">Share, Explore, Earn</h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">Join thousands of travelers sharing experiences and earning rewards.</p>
+      </div>
+      
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <!-- Challenges -->
+        <div class="bg-white rounded-2xl p-6 shadow-lg" data-aos="fade-right">
+          <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+            <i class="fas fa-trophy text-[#c9a227]"></i> Active Challenges
+          </h3>
+          <div id="challenges" class="space-y-4"></div>
+        </div>
+        
+        <!-- Community Feed -->
+        <div class="lg:col-span-2 bg-white rounded-2xl p-6 shadow-lg" data-aos="fade-left">
+          <div class="flex items-center justify-between mb-6">
+            <h3 class="text-xl font-bold">Community Feed</h3>
+            <button class="text-[#0066b3] text-sm" onclick="viewAllPosts()">View All →</button>
+          </div>
+          
+          <div id="communityFeed" class="space-y-4"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sustainability Section -->
+  <section id="sustainability" class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div data-aos="fade-right">
+          <span class="inline-block px-4 py-2 bg-green-100 text-green-600 rounded-full text-sm font-semibold mb-4">
+            <i class="fas fa-leaf mr-2"></i> ECO-TOURISM
+          </span>
+          <h2 class="text-4xl font-bold mb-4">Travel Responsibly</h2>
+          <p class="text-gray-600 mb-6">Join us in preserving the GCC's natural beauty for future generations.</p>
+          
+          <div class="bg-gray-50 rounded-xl p-6">
+            <h3 class="font-semibold mb-4">Carbon Footprint Calculator</h3>
+            <div class="space-y-4">
+              <div>
+                <label class="text-sm font-medium mb-1 block">Flight Distance (km)</label>
+                <input type="range" id="carbonSlider" min="0" max="10000" value="3000" class="w-full" oninput="updateCarbon()">
+                <div class="flex justify-between text-sm mt-1">
+                  <span>0 km</span>
+                  <span class="font-medium text-green-600" id="carbonValue">2.4 tons CO2</span>
+                  <span>10,000 km</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="grid grid-cols-2 gap-4" data-aos="fade-left">
+          <div class="bg-gray-50 rounded-2xl p-6 text-center">
+            <i class="fas fa-solar-panel text-4xl text-yellow-500 mb-3"></i>
+            <h4 class="font-semibold">Solar-Powered</h4>
+          </div>
+          <div class="bg-gray-50 rounded-2xl p-6 text-center">
+            <i class="fas fa-water text-4xl text-blue-500 mb-3"></i>
+            <h4 class="font-semibold">Water Conservation</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-16">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+        <div>
+          <div class="flex items-center space-x-2 rtl:space-x-reverse mb-4">
+            <div class="w-12 h-12 bg-gradient-to-br from-[#0066b3] to-[#3498db] rounded-xl flex items-center justify-center">
+              <i class="fas fa-compass text-white text-2xl"></i>
+            </div>
+            <span class="text-2xl font-bold">GCC Travel 2026</span>
+          </div>
+          <p class="text-gray-400 text-sm">The ultimate travel companion for the Gulf region.</p>
+        </div>
+        
+        <div>
+          <h4 class="font-semibold mb-4">Quick Links</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="#home" class="hover:text-white transition">Home</a></li>
+            <li><a href="#destinations" class="hover:text-white transition">Destinations</a></li>
+            <li><a href="#planner" class="hover:text-white transition">AI Planner</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="font-semibold mb-4">Support</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="#" class="hover:text-white transition">24/7 AI Concierge</a></li>
+            <li><a href="#" class="hover:text-white transition">FAQs</a></li>
+            <li><a href="#" class="hover:text-white transition">Contact Us</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="font-semibold mb-4">Connect With Us</h4>
+          <div class="flex space-x-4 rtl:space-x-reverse mb-4">
+            <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#0066b3] transition"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#0066b3] transition"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#0066b3] transition"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="border-t border-gray-800 pt-8 text-center text-gray-400 text-sm">
+        <p>&copy; 2026 GCC Travel. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Chatbot -->
+  <div id="chatbot" class="fixed bottom-6 right-6 z-50">
+    <button id="chatbotToggle" class="w-16 h-16 bg-gradient-to-r from-[#0066b3] to-[#3498db] rounded-full shadow-lg flex items-center justify-center text-white text-2xl hover:scale-110 transition" aria-label="Open chat">
+      <i class="fas fa-robot"></i>
+    </button>
+    
+    <div id="chatbotWindow" class="absolute bottom-20 right-0 w-96 bg-white rounded-2xl shadow-2xl hidden">
+      <div class="bg-gradient-to-r from-[#0066b3] to-[#3498db] text-white p-4 rounded-t-2xl flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <i class="fas fa-robot"></i>
+          <span class="font-semibold">AI Travel Assistant</span>
+        </div>
+        <button id="closeChatbot" class="text-white hover:opacity-80"><i class="fas fa-times"></i></button>
+      </div>
+      
+      <div class="h-96 overflow-y-auto p-4 space-y-4" id="chatMessages">
+        <div class="flex items-start gap-2">
+          <div class="w-8 h-8 bg-[#0066b3] rounded-full flex items-center justify-center text-white">
+            <i class="fas fa-robot text-sm"></i>
+          </div>
+          <div class="bg-gray-100 rounded-lg p-3 max-w-[80%]">
+            <p class="text-sm">Hello! How can I help you plan your GCC adventure?</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="p-4 border-t">
+        <div class="flex gap-2">
+          <input type="text" id="chatInput" placeholder="Type your message..." class="flex-1 px-4 py-2 border rounded-lg focus:outline-none focus:border-[#0066b3]">
+          <button class="px-4 py-2 bg-[#0066b3] text-white rounded-lg hover:bg-[#3498db] transition" onclick="sendChatMessage()"><i class="fas fa-paper-plane"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Exit Popup -->
+  <div id="exitPopup" class="exit-popup fixed bottom-4 left-4 bg-white p-6 rounded-2xl shadow-2xl z-50 hidden animate-slideUp">
+    <h3 class="text-xl font-bold mb-2">Wait! Don't miss out</h3>
+    <p class="text-gray-600 mb-4">Get 10% off your first booking</p>
+    <div class="flex gap-2">
+      <input type="email" id="popupEmail" placeholder="Your email" class="flex-1 px-4 py-2 border rounded-lg focus:outline-none focus:border-[#0066b3]">
+      <button class="px-4 py-2 bg-[#0066b3] text-white rounded-lg hover:bg-[#3498db]" onclick="subscribePopup()">Subscribe</button>
+    </div>
+    <button class="absolute top-2 right-2 text-gray-400 hover:text-gray-600" onclick="closePopup()"><i class="fas fa-times"></i></button>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
+  
+  <script>
+    // ==================== CONFIGURATION ====================
+    const CONFIG = {
+      MAPBOX_TOKEN: 'pk.eyJ1IjoiZ2NjLXRyYXZlbCIsImEiOiJjbHh6b2F2anIxajRsMmtwN3g5dDFqcGc2In0.signature',
+      API_BASE: 'https://api.gcctravel.com/v1',
+      CITIES: {
+        dubai: { lat: 25.2048, lng: 55.2708, name: 'Dubai', country: 'UAE' },
+        'abu-dhabi': { lat: 24.4539, lng: 54.3773, name: 'Abu Dhabi', country: 'UAE' },
+        riyadh: { lat: 24.7136, lng: 46.6753, name: 'Riyadh', country: 'KSA' },
+        doha: { lat: 25.2854, lng: 51.5310, name: 'Doha', country: 'Qatar' }
+      }
+    };
+
+    // ==================== STATE MANAGEMENT ====================
+    let state = {
+      currentLang: 'en',
+      isDarkMode: false,
+      favorites: JSON.parse(localStorage.getItem('gccFavorites')) || [],
+      user: null,
+      map: null,
+      markers: []
+    };
+
+    // ==================== INITIALIZATION ====================
+    document.addEventListener('DOMContentLoaded', () => {
+      initApp();
+    });
+
+    function initApp() {
+      loadPreferences();
+      initAOS();
+      initSwiper();
+      initMap();
+      initEventListeners();
+      loadRecommendations();
+      loadExperiences();
+      loadChallenges();
+      loadCommunityFeed();
+      initExitIntent();
+      console.log('GCC Travel initialized successfully');
+    }
+
+    // Load saved preferences
+    function loadPreferences() {
+      const savedDarkMode = localStorage.getItem('darkMode') === 'true';
+      if (savedDarkMode) {
+        document.body.classList.add('dark');
+        state.isDarkMode = true;
+        document.querySelector('#darkModeToggle i').className = 'fas fa-sun';
+      }
+      
+      const savedLang = localStorage.getItem('gccLang') || 'en';
+      setLanguage(savedLang);
+    }
+
+    // ==================== LANGUAGE ====================
+    function setLanguage(lang) {
+      state.currentLang = lang;
+      document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+      document.documentElement.lang = lang;
+      document.getElementById('currentLang').textContent = lang.toUpperCase();
+      localStorage.setItem('gccLang', lang);
+    }
+
+    // ==================== AOS ====================
+    function initAOS() {
+      AOS.init({
+        duration: 800,
+        once: true,
+        offset: 100
+      });
+    }
+
+    // ==================== SWIPER ====================
+    function initSwiper() {
+      new Swiper('.destinationSwiper', {
+        slidesPerView: 1,
+        spaceBetween: 20,
+        loop: true,
+        autoplay: { delay: 3000, disableOnInteraction: false },
+        pagination: { el: '.swiper-pagination', clickable: true },
+        navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+        breakpoints: { 640: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }
+      });
+    }
+
+    // ==================== MAPBOX ====================
+    function initMap() {
+      mapboxgl.accessToken = CONFIG.MAPBOX_TOKEN;
+      
+      state.map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v12',
+        center: [55.2708, 25.2048],
+        zoom: 10
+      });
+      
+      state.map.addControl(new mapboxgl.NavigationControl(), 'top-right');
+      
+      // Add markers
+      Object.entries(CONFIG.CITIES).forEach(([key, city]) => {
+        const marker = new mapboxgl.Marker({ color: '#0066b3' })
+          .setLngLat([city.lng, city.lat])
+          .setPopup(new mapboxgl.Popup().setHTML(`<h3 class="font-bold">${city.name}</h3><p>${city.country}</p>`))
+          .addTo(state.map);
+        state.markers.push(marker);
+      });
+      
+      // Load POIs
+      loadPOIs();
+    }
+
+    function loadPOIs() {
+      const pois = [
+        { name: 'Burj Khalifa', distance: '0.5 km', icon: 'fa-building' },
+        { name: 'Dubai Mall', distance: '0.8 km', icon: 'fa-store' },
+        { name: 'Dubai Fountain', distance: '1.0 km', icon: 'fa-water' }
+      ];
+      
+      const poiList = document.getElementById('poiList');
+      poiList.innerHTML = pois.map(poi => `
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 bg-[#0066b3]/10 rounded-lg flex items-center justify-center">
+            <i class="fas ${poi.icon} text-[#0066b3]"></i>
+          </div>
+          <div class="flex-1">
+            <p class="font-semibold">${poi.name}</p>
+            <p class="text-sm text-gray-500">${poi.distance}</p>
+          </div>
+          <button class="text-[#0066b3] text-sm" onclick="showAR('${poi.name}')">AR View</button>
+        </div>
+      `).join('');
+    }
+
+    // ==================== SEARCH ====================
+    function handleSearch() {
+      const query = document.getElementById('searchInput').value;
+      const date = document.getElementById('dateInput').value;
+      
+      if (!query) {
+        alert('Please enter a destination');
+        return;
+      }
+      
+      showLoading(true);
+      
+      // Simulate search
+      setTimeout(() => {
+        const results = [
+          { name: 'Burj Khalifa', price: '$85', rating: '4.9' },
+          { name: 'Desert Safari', price: '$120', rating: '4.8' },
+          { name: 'Sheikh Zayed Mosque', price: '$45', rating: '4.9' }
+        ];
+        
+        const resultsDiv = document.getElementById('searchResults');
+        resultsDiv.innerHTML = results.map(r => `
+          <div class="p-3 hover:bg-gray-50 cursor-pointer rounded-lg" onclick="selectResult('${r.name}')">
+            <div class="flex justify-between">
+              <span class="font-semibold">${r.name}</span>
+              <span class="text-[#0066b3]">${r.price}</span>
+            </div>
+            <div class="text-sm text-gray-500">★ ${r.rating}</div>
+          </div>
+        `).join('');
+        resultsDiv.classList.remove('hidden');
+        showLoading(false);
+      }, 500);
+    }
+
+    // ==================== LOADING ====================
+    function showLoading(show) {
+      document.getElementById('loadingOverlay').classList.toggle('hidden', !show);
+    }
+
+    // ==================== FAVORITES ====================
+    function toggleFavorite(button, id) {
+      button.classList.toggle('active');
+      const icon = button.querySelector('i');
+      
+      if (button.classList.contains('active')) {
+        icon.className = 'fas fa-heart text-2xl text-[#c9a227]';
+        if (!state.favorites.includes(id)) {
+          state.favorites.push(id);
+        }
+      } else {
+        icon.className = 'far fa-heart text-2xl text-gray-700';
+        state.favorites = state.favorites.filter(f => f !== id);
+      }
+      
+      localStorage.setItem('gccFavorites', JSON.stringify(state.favorites));
+      showNotification(button.classList.contains('active') ? 'Added to favorites' : 'Removed from favorites');
+    }
+
+    // ==================== NOTIFICATIONS ====================
+    function showNotification(message) {
+      const notification = document.createElement('div');
+      notification.className = 'fixed top-20 right-4 bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg z-50 animate-slideUp';
+      notification.textContent = message;
+      document.body.appendChild(notification);
+      setTimeout(() => notification.remove(), 3000);
+    }
+
+    // ==================== AI RECOMMENDATIONS ====================
+    function loadRecommendations() {
+      const recommendations = [
+        { name: 'Burj Khalifa At The Top', location: 'Dubai', price: '$85', rating: '4.9', image: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=100' },
+        { name: 'Premium Desert Safari', location: 'Dubai', price: '$120', rating: '4.8', image: 'https://images.unsplash.com/photo-1578894381163-e3c1b3b8b5d3?w=100' },
+        { name: 'Sheikh Zayed Mosque Tour', location: 'Abu Dhabi', price: '$45', rating: '4.9', image: 'https://images.unsplash.com/photo-1578894381163-e3c1b3b8b5d3?w=100' }
+      ];
+      
+      const container = document.getElementById('recommendations');
+      container.innerHTML = recommendations.map(r => `
+        <div class="flex items-center gap-4 p-4 bg-gray-50 rounded-xl">
+          <img src="${r.image}" alt="${r.name}" class="w-20 h-20 rounded-lg object-cover" loading="lazy">
+          <div class="flex-1">
+            <h4 class="font-semibold">${r.name}</h4>
+            <p class="text-sm text-gray-600">${r.location} • ${r.rating} ★</p>
+          </div>
+          <div class="text-right">
+            <div class="font-bold">${r.price}</div>
+            <button class="mt-2 px-4 py-1 bg-[#0066b3] text-white rounded-full text-sm" onclick="bookNow('${r.name}')">Book</button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function generateItinerary(event) {
+      event.preventDefault();
+      showLoading(true);
+      
+      setTimeout(() => {
+        showLoading(false);
+        showNotification('AI itinerary generated! Check your email.');
+      }, 2000);
+    }
+
+    // ==================== EXPERIENCES ====================
+    function loadExperiences() {
+      const experiences = [
+        { name: 'Private Yacht Charter', location: 'Dubai Marina', price: '$2,500', period: 'day', rating: '4.9', image: 'https://images.unsplash.com/photo-1578894381163-e3c1b3b8b5d3?w=800' },
+        { name: 'Luxury Desert Glamping', location: 'Dubai Desert', price: '$890', period: 'night', rating: '4.8', image: 'https://images.unsplash.com/photo-1578894381163-e3c1b3b8b5d3?w=800' },
+        { name: "Chef's Table Experience", location: 'Burj Khalifa', price: '$450', period: 'person', rating: '4.9', image: 'https://images.unsplash.com/photo-1578894381163-e3c1b3b8b5d3?w=800' }
+      ];
+      
+      const container = document.getElementById('experiencesGrid');
+      container.innerHTML = experiences.map(e => `
+        <div class="bg-white rounded-2xl overflow-hidden shadow-lg group cursor-pointer" onclick="viewExperience('${e.name}')">
+          <div class="relative h-64">
+            <img src="${e.image}" alt="${e.name}" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" loading="lazy">
+            <div class="absolute top-4 right-4">
+              <span class="premium-badge">PREMIUM</span>
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-2">${e.name}</h3>
+            <p class="text-gray-600 mb-4">${e.location} • ${e.rating} ★</p>
+            <div class="flex items-center justify-between">
+              <div>
+                <span class="text-2xl font-bold text-[#0066b3]">${e.price}</span>
+                <span class="text-sm text-gray-500">/${e.period}</span>
+              </div>
+              <button class="px-4 py-2 bg-[#0066b3] text-white rounded-lg" onclick="event.stopPropagation(); bookNow('${e.name}')">Book Now</button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // ==================== COMMUNITY ====================
+    function loadChallenges() {
+      const challenges = [
+        { name: 'Desert Safari Challenge', points: '+500', progress: 60, completed: 3, total: 5 },
+        { name: '7 Emirates Explorer', points: '+1000', progress: 28, completed: 2, total: 7 },
+        { name: 'Foodie Journey', points: '+300', progress: 80, completed: 8, total: 10 }
+      ];
+      
+      const container = document.getElementById('challenges');
+      container.innerHTML = challenges.map(c => `
+        <div class="p-4 bg-gray-50 rounded-xl">
+          <div class="flex items-center justify-between mb-2">
+            <span class="font-semibold">${c.name}</span>
+            <span class="bg-gradient-to-r from-[#c9a227] to-yellow-400 text-xs px-2 py-1 rounded-full">${c.points} pts</span>
+          </div>
+          <div class="w-full bg-gray-200 rounded-full h-2 mb-2">
+            <div class="bg-[#0066b3] h-2 rounded-full" style="width: ${c.progress}%"></div>
+          </div>
+          <div class="flex items-center justify-between text-sm">
+            <span>${c.completed}/${c.total} completed</span>
+            <span class="text-[#0066b3]">${c.progress}%</span>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function loadCommunityFeed() {
+      const posts = [
+        { user: 'Ahmed Al Maktoum', time: '2 hours ago', content: 'Just completed the Desert Safari Challenge! 🏜️', likes: 234, comments: 45 },
+        { user: 'Sarah Johnson', time: '5 hours ago', content: 'The AR navigation at Al Ula is incredible! 📱✨', likes: 189, comments: 32 }
+      ];
+      
+      const container = document.getElementById('communityFeed');
+      container.innerHTML = posts.map(p => `
+        <div class="flex gap-4 p-4 bg-gray-50 rounded-xl">
+          <div class="w-12 h-12 bg-[#0066b3] rounded-full flex items-center justify-center text-white font-bold">${p.user.charAt(0)}</div>
+          <div class="flex-1">
+            <div class="flex items-center gap-2 mb-1">
+              <span class="font-semibold">${p.user}</span>
+              <span class="text-xs text-gray-500">• ${p.time}</span>
+            </div>
+            <p class="text-gray-700 mb-2">${p.content}</p>
+            <div class="flex items-center gap-4 text-sm text-gray-500">
+              <button class="flex items-center gap-1 hover:text-[#0066b3]" onclick="likePost(this)"><i class="far fa-heart"></i> ${p.likes}</button>
+              <button class="flex items-center gap-1 hover:text-[#0066b3]"><i class="far fa-comment"></i> ${p.comments}</button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // ==================== BOOKING ====================
+    function bookNow(experience) {
+      showLoading(true);
+      setTimeout(() => {
+        showLoading(false);
+        showNotification(`Booking started for ${experience}`);
+        // Redirect to booking page
+      }, 1000);
+    }
+
+    // ==================== CARBON CALCULATOR ====================
+    function updateCarbon() {
+      const slider = document.getElementById('carbonSlider');
+      const value = parseInt(slider.value);
+      const tons = (value * 0.0008).toFixed(1);
+      document.getElementById('carbonValue').textContent = `${tons} tons CO2`;
+    }
+
+    // ==================== EVENT LISTENERS ====================
+    function initEventListeners() {
+      // Language dropdown
+      document.getElementById('langDropdownBtn').addEventListener('click', (e) => {
+        e.stopPropagation();
+        document.getElementById('langDropdown').classList.toggle('hidden');
+      });
+      
+      document.querySelectorAll('.lang-option').forEach(btn => {
+        btn.addEventListener('click', () => {
+          setLanguage(btn.dataset.lang);
+          document.getElementById('langDropdown').classList.add('hidden');
+        });
+      });
+      
+      // Dark mode
+      document.getElementById('darkModeToggle').addEventListener('click', () => {
+        state.isDarkMode = !state.isDarkMode;
+        document.body.classList.toggle('dark');
+        localStorage.setItem('darkMode', state.isDarkMode);
+        const icon = document.querySelector('#darkModeToggle i');
+        icon.className = state.isDarkMode ? 'fas fa-sun' : 'fas fa-moon';
+      });
+      
+      // User menu
+      document.getElementById('userMenuBtn').addEventListener('click', (e) => {
+        e.stopPropagation();
+        document.getElementById('userDropdown').classList.toggle('hidden');
+      });
+      
+      // Mobile menu
+      const mobileBtn = document.getElementById('mobileMenuBtn');
+      const mobileMenu = document.getElementById('mobileMenu');
+      const closeMobile = document.getElementById('closeMobileMenu');
+      const overlay = document.getElementById('mobileMenuOverlay');
+      
+      mobileBtn.addEventListener('click', () => {
+        mobileMenu.classList.remove('hidden');
+        setTimeout(() => {
+          mobileMenu.classList.add('open');
+          overlay.classList.remove('hidden');
+        }, 10);
+      });
+      
+      closeMobile.addEventListener('click', closeMobileMenu);
+      overlay.addEventListener('click', closeMobileMenu);
+      
+      function closeMobileMenu() {
+        mobileMenu.classList.remove('open');
+        overlay.classList.add('hidden');
+        setTimeout(() => {
+          mobileMenu.classList.add('hidden');
+        }, 300);
+      }
+      
+      // Close dropdowns on outside click
+      document.addEventListener('click', () => {
+        document.getElementById('langDropdown').classList.add('hidden');
+        document.getElementById('userDropdown').classList.add('hidden');
+      });
+      
+      // Voice search
+      document.getElementById('voiceSearch').addEventListener('click', () => {
+        const btn = document.getElementById('voiceSearch');
+        btn.classList.add('voice-active');
+        setTimeout(() => {
+          btn.classList.remove('voice-active');
+          showNotification('Listening... (Voice search simulation)');
+        }, 2000);
+      });
+      
+      // Search input
+      document.getElementById('searchInput').addEventListener('input', (e) => {
+        if (e.target.value.length > 2) {
+          handleSearch();
+        }
+      });
+      
+      // Chatbot
+      const chatbotToggle = document.getElementById('chatbotToggle');
+      const chatbotWindow = document.getElementById('chatbotWindow');
+      const closeChatbot = document.getElementById('closeChatbot');
+      
+      chatbotToggle.addEventListener('click', () => {
+        chatbotWindow.classList.toggle('hidden');
+      });
+      
+      closeChatbot.addEventListener('click', () => {
+        chatbotWindow.classList.add('hidden');
+      });
+      
+      // Chat input
+      document.getElementById('chatInput').addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') sendChatMessage();
+      });
+      
+      // Favorite buttons
+      document.querySelectorAll('.favorite-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const id = btn.closest('[data-id]')?.dataset.id || 'unknown';
+          toggleFavorite(btn, id);
+        });
+      });
+    }
+
+    // ==================== CHATBOT ====================
+    function sendChatMessage() {
+      const input = document.getElementById('chatInput');
+      const message = input.value.trim();
+      if (!message) return;
+      
+      const messages = document.getElementById('chatMessages');
+      
+      // Add user message
+      messages.innerHTML += `
+        <div class="flex items-start gap-2 justify-end">
+          <div class="bg-[#0066b3] text-white rounded-lg p-3 max-w-[80%]">
+            <p class="text-sm">${message}</p>
+          </div>
+          <div class="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center">👤</div>
+        </div>
+      `;
+      
+      input.value = '';
+      messages.scrollTop = messages.scrollHeight;
+      
+      // Simulate AI response
+      setTimeout(() => {
+        messages.innerHTML += `
+          <div class="flex items-start gap-2">
+            <div class="w-8 h-8 bg-[#0066b3] rounded-full flex items-center justify-center text-white">
+              <i class="fas fa-robot text-sm"></i>
+            </div>
+            <div class="bg-gray-100 rounded-lg p-3 max-w-[80%]">
+              <p class="text-sm">Thanks for your message! I'll help you with that.</p>
+            </div>
+          </div>
+        `;
+        messages.scrollTop = messages.scrollHeight;
+      }, 1000);
+    }
+
+    // ==================== EXIT INTENT ====================
+    function initExitIntent() {
+      let shown = false;
+      
+      document.addEventListener('mouseleave', (e) => {
+        if (e.clientY < 0 && !shown && !localStorage.getItem('popupShown')) {
+          shown = true;
+          document.getElementById('exitPopup').classList.remove('hidden');
+          localStorage.setItem('popupShown', 'true');
+          
+          setTimeout(() => {
+            document.getElementById('exitPopup').classList.add('hidden');
+          }, 10000);
+        }
+      });
+    }
+
+    function closePopup() {
+      document.getElementById('exitPopup').classList.add('hidden');
+    }
+
+    function subscribePopup() {
+      const email = document.getElementById('popupEmail').value;
+      if (email) {
+        showNotification('Thanks for subscribing! Check your email for 10% off.');
+        closePopup();
+      }
+    }
+
+    // ==================== UTILITY FUNCTIONS ====================
+    function selectDestination(city) {
+      showNotification(`Exploring ${CONFIG.CITIES[city].name}`);
+      // Fly to on map
+      if (state.map) {
+        state.map.flyTo({
+          center: [CONFIG.CITIES[city].lng, CONFIG.CITIES[city].lat],
+          zoom: 12,
+          essential: true
+        });
+      }
+    }
+
+    function viewExperience(name) {
+      showNotification(`Viewing ${name}`);
+    }
+
+    function loadMoreExperiences() {
+      showNotification('Loading more experiences...');
+    }
+
+    function showFlightDeals() {
+      showNotification('Showing flight deals');
+    }
+
+    function downloadOfflineMaps() {
+      showNotification('Downloading offline maps...');
+    }
+
+    function startTrial() {
+      showNotification('Starting your 14-day free trial!');
+    }
+
+    function selectFamilyPlan() {
+      showNotification('Family plan selected');
+    }
+
+    function viewAllPosts() {
+      showNotification('Loading community posts...');
+    }
+
+    function likePost(btn) {
+      const count = parseInt(btn.textContent.match(/\d+/)[0]);
+      btn.innerHTML = `<i class="fas fa-heart text-red-500"></i> ${count + 1}`;
+    }
+
+    function showAR(poi) {
+      showNotification(`AR view for ${poi} - Point your camera at the landmark`);
+    }
+
+    function selectResult(name) {
+      document.getElementById('searchInput').value = name;
+      document.getElementById('searchResults').classList.add('hidden');
+      showNotification(`Selected: ${name}`);
+    }
+
+    // ==================== PERFORMANCE OPTIMIZATIONS ====================
+    // Debounce function
+    function debounce(func, wait) {
+      let timeout;
+      return function executedFunction(...args) {
+        const later = () => {
+          clearTimeout(timeout);
+          func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+      };
+    }
+
+    // Lazy load images
+    if ('IntersectionObserver' in window) {
+      const imageObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const img = entry.target;
+            img.src = img.dataset.src;
+            imageObserver.unobserve(img);
+          }
+        });
+      });
+      
+      document.querySelectorAll('img[data-src]').forEach(img => imageObserver.observe(img));
+    }
+  </script>
+</body>
+</html>
